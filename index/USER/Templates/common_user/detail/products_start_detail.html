@@ -1,0 +1,49 @@
+<!-- Products Start -->
+<div class="container-fluid py-5">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">You May Also Like</span></h2>
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="owl-carousel related-carousel">
+                {% for i in obj_related %}
+                    <div class="product-item bg-light">
+                        <div class="product-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="/ADMIN/media/{{i.anh}}" alt="">
+                            <div class="product-action">
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate" href="/detail/{{i.id_ao}}">
+                                {% if i.ten_ao|length > 23 %}
+                                {{i.ten_ao|slice:"0:24"}}...
+                                {% else %}
+                                {{i.ten_ao}}
+                                {% endif %}</a>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                {% if i.sale_price > 0 %}
+                                    <h5>{{i.sale_price}}</h5><h6 class="text-muted ml-2"><del>{{i.giatien}}</del> SL {{i.soluong}}</h6>
+                                {% endif %}
+                                {% if i.sale_price == 0 %}
+                                    <h5>{{i.giatien}}</h5><h6 class="text-muted ml-2"> SL {{i.soluong}}</h6>
+                                {% endif %}
+                                
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mb-1">
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Products End -->

@@ -1,0 +1,220 @@
+.center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.table_danhsach{
+    max-width: 824px;
+    margin: 15px auto;
+    display: inline-block;
+    border-collapse:collapse;    /* để nếu mà các tahnh rời nhnhau thì dùng cái này để ghép vào  */
+    border-top: 1px solid #090ca2;
+    box-shadow: 0 7px 25px 2px #807e80;
+    border-radius: 10px;
+    flex: 1;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.table__danhsach--row{
+    max-width: 824px;
+    position: relative;
+    z-index: 1;
+}
+.table__danhsach--row:hover{
+    cursor: grab;
+}
+.table__danhsach--row:after{
+    content: "";
+    position: absolute;
+    background: #c1b6f749;
+    right: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    transition: width 0.5s linear;
+    z-index: -1;
+}
+.table__danhsach--row:hover:after{
+    width: 100%;
+    
+}
+
+
+.table__danhsach--o-main{
+    padding: 10px 25px;
+    text-align: left;
+}
+.table__danhsach--o{
+    border-top: 1px solid #0b118d;
+    padding: 10px 25px;
+    text-align: left;
+    z-index: 3;
+}
+
+.text_gradient{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body .form_main{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #4e4d4d7b;
+    z-index: 10;
+    overflow: auto;
+    animation-name: open_location;
+    animation-duration: 1s;
+    transition: all 2s linear;
+}
+body .form_main--adder{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #4e4d4d7b;
+    z-index: 10;
+    overflow: auto;
+    animation-name: open_location_add;
+    animation-duration: 1s;
+    transition: all 2s linear;
+}
+body .form_main--fix{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: auto;
+    background: #FFF;
+    z-index: 10;
+    border-radius: 10%;
+    box-shadow: 0 7px 25px 2px #807e80;
+    display: none;
+    animation: sale 0.5s linear;
+    
+}
+
+.flex__from{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.position__icon{
+    padding: 7px;
+    background: #FFF;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px 0.5px #807e80;
+}
+.position__icon:hover{
+    cursor: pointer;
+    background: #deb6b6;
+
+}
+@keyframes sale {
+    from{
+        opacity: 0;
+        transform: translateY(70px);
+        transition: all 1s linear;
+    }to{
+        opacity: 1;
+    }
+}
+@keyframes open_location {
+    0%{
+        opacity: 0;
+        transform: translateX(50%);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes open_location_add {
+    0%{
+        opacity: 0;
+        transform: scale(50%);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.form_main--test{
+    width: 100%;
+    margin: 100px auto;
+    width: 50%;
+    height: auto;
+    background: #fffefe;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 17px #616060e0;
+}
+.float__left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #385bf6;
+    color: #ffffff;
+    border-radius: 10%;
+    padding: 7px 15px;
+}
+.flex__from--content{
+    display: flex;
+}
+.from__right--input{
+    margin-left: 10px;
+    flex: 1;
+}
+.from__right--input{
+    margin-left: 10px;
+    flex:1;
+}
+.giua{
+    width: 100%;
+}
+.btn__giua{
+    width: 100px;
+    margin: auto;
+    background: #5d6de6;
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: center;
+    border-radius: 10px;
+    color: #FFF;
+}.name_input--anh-btn{
+  border-radius: 5px;
+  background: #918def;
+  text-align: center;
+  cursor: pointer;
+  color: #FFF;
+}
+.name_input--anh-btn:hover{
+  background: #6863f0;
+}
+label{
+  color: #888888;
+}
+.table_danhsach--sale{
+    max-width: 368px;
+    margin: auto 10px;
+    border-top: 1px solid #090ca2;
+    box-shadow: 0 7px 25px 2px #807e80;
+    border-radius: 10px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.flex__from{
+
+}
+/* LOGIN ------------------------- */

@@ -1,0 +1,236 @@
+<div class="form_main" id="form_main">
+    <div class="form_main--test">
+        <div class="closeBtn float__left"><i class="fas fa-home"></i></div>
+        <div class="closeBtn float__left" style="background:transparent;">Sửa sản phẩm</div>
+        <form action="/adm_sua/" method="post" class="flex__from--content" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="from__right--input">
+                <input type="hidden" class="form-control" name="index_ao" id="id_ao_ao">
+                <div class="form-group">
+                    <label for="email">Tên Aó:</label>
+                    <input type="text" class="form-control"  name="tenao" id="tenao">
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Số lượng:</label>
+                    <input type="text" class="form-control"  name="soluong" id="soluong">
+                  </div>
+                  <div class="form-group">
+                      <label for="pwd">Giá tiền:</label>
+                      <input type="text" class="form-control" name="giatien" id="giatien">
+                  </div>
+                  <div class="form-group">
+                      <label for="pwd">Sale: </label>
+                      <input type="text" class="form-control" name="Sale" id="Sale_price">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Sửa</button>
+            </div>
+            <div class="from__right--input">
+                <div class="form-group">
+                    <label for="pwd" >Mô tả:</label>
+                    <textarea class="form-control" name="mota" id="mota"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="sel1">Loại sản phẩm:</label>
+                    <select class="form-control" id="sel1" name="type_prodct">
+                        {% for i in listmaloai %}
+                            <option value={{i.id_loaiao}}>{{i.type_name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                <div class="form-group">
+                    <div class="name_input name_input--anh">
+                        <img src="" alt="" width="150" id="anh_choosed" height="150" style="border-radius: 50%; object-fit: cover;">    
+                        <input type="file" id="filechooser" class="file_choose" style="display:none;" name="anh">
+                    </div>
+                    <div class="name_input name_input--anh">
+                        <div class="name_input--anh-btn" id="btn__chonanh">Chọn ảnh</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% comment %} Thêm sản phẩm {% endcomment %}
+<div class="form_main--adder" id="form_main--adder">
+    <div class="form_main--test">
+        <div class="closeBtn_add float__left"><i class="fas fa-home"></i></div>
+        <div class="float__left" style="background:transparent; color:red;">Thêm sản phẩm </div>
+        <form action="/adm__add/" class="flex__from--content" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="from__right--input">
+                <div class="form-group">
+                    <label for="email">Tên Aó:</label>
+                    <input type="text" class="form-control"  name="tenao" >
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Số lượng:</label>
+                    <input type="text" class="form-control"  name="soluong">
+                  </div>
+                  <div class="form-group">
+                      <label for="pwd">Giá tiền:</label>
+                      <input type="text" class="form-control" name="giatien">
+                    </div>
+                  <div class="form-group">
+                      <label for="pwd">Sale: </label>
+                      <input type="text" class="form-control" value="0" name="Sale">
+                    </div>
+                  <button type="submit" class="btn btn-primary" name="Them">Thêm</button>
+            </div>
+            <div class="from__right--input">
+                <div class="form-group"> 
+                    <label for="pwd" >Mô tả:</label>
+                    <textarea class="form-control" name="mota"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="sel1">Loại sản phẩm:</label>
+                    <select class="form-control" id="sel1" name="type_prodct">
+                        {% for i in listmaloai %}
+                            <option value={{i.id_loaiao}}>{{i.type_name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                {% comment %} i.image.url {% endcomment %}
+                <div class="form-group">
+                    <div class="name_input name_input--anh">
+                        <img src="image/user.jpg" alt="" width="150" id="anh_choosed_add" height="150" style="border-radius: 50%; object-fit: cover;">    
+                        <input type="file" id="filechooser_add" class="file_choose" style="display:none;" name="anh">
+                    </div>
+                    <div class="name_input name_input--anh">
+                        <div class="name_input--anh-btn" id="btn__addanh">Chọn ảnh</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="form_main--fix" id="form_main--fix">
+    <form action="{% url 'SuaMagiamgia' %}" class="flex__from" method="post">
+        {% csrf_token %}
+        <input type="hidden" class="form-control" name="id_loaiao" id="id_loaiao">
+        <label for="email" id="Sale">Sale close(%)<i class="fa-solid fa-xmark position__icon" id="icon__close"></i></label>
+        <div class="form-group">
+            <label for="email">Sale</label>
+            <input type="text" class="form-control"  name="sale" id="sale">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary" name="sua">Sửa</button>
+    </div>
+    </form>
+</div>
+
+<div class="form_main--fix" id="form_main--themMaLoai">
+    <form action="{% url 'ThemMaLoai' %}" class="flex__from" method="post">
+        {% csrf_token %}
+        <label for="email" id="Sale">Thêm loại sản phẩm<i class="fa-solid fa-xmark position__icon" id="icon__close--maloai"></i></label>
+        <div class="form-group">
+            <label for="email">Tên loại</label>
+            <input type="text" class="form-control"  name="TenLoai" id="TenLoai">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary" name="themsp">thêm</button> 
+    </div>
+    </form>
+</div>
+
+<div class="form_main--fix" id="form_main--SuaMaLoai">
+    <form action="{% url 'SuaMaLoai' %}" class="flex__from" method="post">
+        {% csrf_token %}
+        <input type="hidden" class="form-control" name="idmaloai" id="idmaloai">
+        <label for="email" id="Sale">Sửa loại sản phẩm<i class="fa-solid fa-xmark position__icon" id="icon__close--maloaiSua"></i></label>
+        <div class="form-group">
+            <label for="email">Tên loại</label>
+            <input type="text" class="form-control"  name="TenLoai" id="TenLoai_Sua">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary" name="themsp">Đổi</button> 
+    </div>
+    </form>
+</div>
+
+
+{% load static %}
+<script src="{% static 'js/custom.js' %}"></script>
+<script>
+
+    var listobj = JSON.parse('{{ list_json|safe }}');
+    var listobj_loai = JSON.parse('{{ list_json_maloai|safe }}');
+    const form__addd = document.getElementById("form_main--adder");
+    const form = document.getElementById("form_main");
+    const closeBtn = document.getElementsByClassName('closeBtn')[0];
+    const closeBtn_add = document.getElementsByClassName('closeBtn_add')[0];
+
+    const  id_ao_ao = document.getElementById("id_ao_ao");
+    const  tenao = document.getElementById("tenao");
+    const  soluong = document.getElementById("soluong");
+    const  giatien = document.getElementById("giatien");
+    const  Sale_price = document.getElementById("Sale_price");
+    const  mota = document.getElementById("mota");
+    
+
+    function hide_form(id_ao){
+        const obj = listobj.find(i => i.id_ao === id_ao);
+        id_ao_ao.value = id_ao;
+        tenao.value = obj.ten_ao;
+        soluong.value = obj.soluong;
+        giatien.value = obj.giatien;
+        Sale_price.value = obj.sale_price;
+        mota.value = obj.mo_ta;
+        anh_choosed.src = '/ADMIN/media/'+obj.anh;
+        console.log("\n\n"+id_ao_ao.value+"\n\n"+obj.id_ao+"\n\n"+id_ao_ao.value)
+        form.style.display = 'block';
+    }
+    closeBtn.addEventListener('click',()=>{
+        form.style.display = 'none';
+    });
+    function hide_form_adder(){
+        form__addd.style.display = 'block';
+    }
+    closeBtn_add.addEventListener('click',()=>{
+        form__addd.style.display = 'none';
+    });
+
+
+    const id_loaiao = document.getElementById("id_loaiao");
+    const sale = document.getElementById("sale");
+    const form_main__fix  =document.getElementById("form_main--fix");
+    const icon__close = document.getElementById("icon__close");
+    function hide_form__fixSale(id){
+        const obj = listobj.find(i => i.id_ao === id);
+        form_main__fix.style.display = "block";
+        id_loaiao.value = id;
+        sale.value = obj.sale_price;
+    }
+    icon__close.addEventListener('click',()=>{
+        form_main__fix.style.display = 'none';
+    });
+
+    const them_maloai = document.getElementById("them_maloai");
+    const form_main__themMaLoai = document.getElementById("form_main--themMaLoai");
+    const icon__close__maloai = document.getElementById("icon__close--maloai");
+    them_maloai.addEventListener('click',()=>{
+        form_main__themMaLoai.style.display = 'block';
+    });
+    icon__close__maloai.addEventListener('click',()=>{
+        form_main__themMaLoai.style.display = 'none';
+    });
+    
+    const TenLoai = document.getElementById("TenLoai_Sua");
+    const form_main__SuaMaLoai = document.getElementById("form_main--SuaMaLoai");
+    const icon__close__maloai2 = document.getElementById("icon__close--maloaiSua");
+    const idmaloai = document.getElementById("idmaloai");
+
+    icon__close__maloai2.addEventListener('click',()=>{
+        form_main__SuaMaLoai.style.display = 'none';
+    });
+
+    function hide_form_maloai_fix(id){
+        console.log("vào vào ");
+        const obj = listobj_loai.find(i => i.id_loaiao === id);
+        form_main__SuaMaLoai.style.display = 'block';
+        TenLoai.value = obj.type_name;
+        idmaloai.value = id;
+        console.log("vào vào "+idmaloai.value);
+    };
+
+</script>

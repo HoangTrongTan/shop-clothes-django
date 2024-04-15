@@ -1,0 +1,33 @@
+{% extends 'common_user/Login/layout.html' %}
+{% block content %}
+            <div class="Sign_in">
+                <div class="from_total_title">
+                    <h1 class="title">Login</h1>
+                </div>
+                <div class="form_login">
+                    <form action="{% url 'Login_user' %}" method="post" class="form">
+                        {% csrf_token %}
+                        <div class="name_input">
+                            <input type="text" name="Taikhoan" placeholder=" " id="inputtk" class="input_text_form">
+                            <h3 class="name_text">Tài khoản</h3>
+                            <i class="fa-regular fa-user icon"></i>
+                            <i class="fa-solid fa-circle-xmark icon__right" id="xoa3" style="display: none;"></i>
+                        </div>
+                        <div class="name_input">    
+                            <input type="password" name="matkhau" placeholder=" " id="inputmklogin" class="input_text_form">
+                            <h3 class="name_text">Mật khẩu</h3>
+                            <i class="fa-solid fa-lock icon"></i>
+                            <i class="icon__right fas fa-eye-slash" id="show_password1"></i>
+                        </div>
+                        <input type="submit" value="Đăng nhập" class="input_button">
+                    </form>
+                </div>
+
+                <div class="total__form--bottom">
+                    <a href="#" class="input_button register" id="dangky">Đăng ký</a>
+                    <a href="#" class="input_button forgotpassword">Quyên mật khẩu</a>
+                </div>
+            </div>
+
+            {% include 'common_user/Login/register.html' %}
+{% endblock  %}

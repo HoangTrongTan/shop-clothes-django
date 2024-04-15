@@ -1,0 +1,14 @@
+<h4 class="text_gradient" style="margin-top: 50px; color: #bcdc53;">Mã loại sản phẩm</h4>
+        <table class="table_danhsach--sale">
+            <tr class="table__danhsach--row">
+                <th class="table__danhsach--o-main">Tên loại</th>
+                <th class="table__danhsach--o-main"><i class="fa-solid fa-sliders"></i>Chức năng</th>
+            </tr>
+            {% for i in listmaloai %}
+                <tr class="table__danhsach--row">
+                    <td class="table__danhsach--o">{{i.type_name}}</td>
+                    <td class="table__danhsach--o"><button onclick="hide_form_maloai_fix( {{i.id_loaiao}} )" id="sua_maloai" class="button">Sửa</button><a href="{% url 'XoaMaloaiSp' i.id_loaiao %}"><button onclick="return confirm('Bạn có chắc muốn xóa giảm giá không ?');" id="model_btn" class="button">Xóa</button></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <button onclick="" id="them_maloai" class="button">Thêm mã loại</button>

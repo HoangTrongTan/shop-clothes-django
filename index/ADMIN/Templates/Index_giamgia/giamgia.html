@@ -1,0 +1,20 @@
+<h4 class="text_gradient" style="color:#9a45e4;">Các sản phẩm giảm giá</h4>
+<table class="table_danhsach--sale">
+    <tr class="table__danhsach--row">
+        <th class="table__danhsach--o-main">Tên áo</th>
+        <th class="table__danhsach--o-main">Sale</th>
+        <th class="table__danhsach--o-main">image</th>
+        <th class="table__danhsach--o-main">Chức năng</th>
+    </tr>
+    {% for i in listobj %}
+        {% if i.sale_price > 0 %}
+            <tr class="table__danhsach--row">
+                <td class="table__danhsach--o">{{i.ten_ao}}</td>
+                <td class="table__danhsach--o">{{i.sale_price}}%</td>
+                <td class="table__danhsach--o"><img src="/ADMIN/media/{{i.anh}}" alt="ảnh sản phẩm" style="width:60px; height:60px; border-radius:5%"></td>
+                <td class="table__danhsach--o"><button onclick="hide_form__fixSale({{i.id_ao}})" id="sua_sale" class="button">Sửa</button><a href="{% url 'XoaGiamGia' i.id_ao %}"><button onclick="return confirm('Bạn có chắc muốn xóa giảm giá không ?');" id="model_btn" class="button">Xóa</button></a></td>
+            </tr>
+        {% endif %}
+        
+    {% endfor %}
+</table>

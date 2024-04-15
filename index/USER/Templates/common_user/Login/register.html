@@ -1,0 +1,49 @@
+{% load static %}
+<div class="Sign_up">
+    <div class="from_total_title">
+        <h1 class="title">Register</h1>
+    </div>
+    <div class="form_login">
+        <form action="{% url 'Register' %}" method="POST" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="name_input">
+                <input type="text"  placeholder=" " id="hide_close_name" class="input_text_form clear" name="taikhoan">
+                <h3 class="name_text">Tài khoản</h3>
+                <i class="fa-solid fa-circle-xmark icon__right" id="xoa" style="display: none;"></i>
+                <i class="fa-regular fa-user icon"></i>
+            </div>
+            <div class="name_input">    
+                <input type="password"  placeholder=" " id="input_password" class="input_text_form" name="Matkhau">
+                <h3 class="name_text">Mật khẩu</h3>
+                <i class="fa-solid fa-lock icon"></i>
+                <i class="icon__right fas fa-eye-slash" id="show_password"></i>
+            </div>
+            <div class="name_input">    
+                <input type="text"  placeholder=" " id="ten" class="input_text_form" name="Ten">
+                <h3 class="name_text">Tên</h3>
+                <i class="fa-solid fa-circle-xmark icon__right" id="xoa1" style="display: none;"></i>
+                <i class="fa-solid fa-file-signature icon"></i>
+            </div>
+            <div class="name_input">    
+                <input type="text"  placeholder=" " id="email" class="input_text_form" name="Email">
+                <h3 class="name_text">Email</h3>
+                <i class="fa-solid fa-circle-xmark icon__right" id="xoa2" style="display: none;"></i>
+                <i class="fa-regular fa-envelope icon"></i>
+            </div>
+            <div class="name_input name_input--anh">
+                <img src="{% static 'image/user.jpg' %}" alt="" width="70" id="anh_choosed" height="70" style="border-radius: 50%; object-fit: cover;">    
+                <input type="file"  id="filechooser" class="file_choose" name="anh">
+            </div>
+            <div class="name_input name_input--anh">
+                <div class="name_input--anh-btn" id="btn__chonanh">Chọn ảnh</div>
+            </div>
+            <div class="total__form--bottom-dangky">
+                <a href="#" class="input_button btn_back" id="quaylai">Quay lại</a>
+                <input type="submit" value="Tạo" class="input_button">
+            </div>
+            
+        </form>
+    </div>
+
+    
+</div>

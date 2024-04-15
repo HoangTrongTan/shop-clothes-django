@@ -1,0 +1,61 @@
+{% extends 'common/layout.html' %}
+{% block content %}
+<h2 class="text_gradient">Danh sách sản phẩm</h2>
+<div class="center">
+    <table class="table_danhsach">
+        <tr class="table__danhsach--row">
+            <th class="table__danhsach--o-main">Tên áo</th>
+            <th class="table__danhsach--o-main">Số lượng</th>
+            <th class="table__danhsach--o-main">Giá sản phẩm</th>
+            <th class="table__danhsach--o-main">Ảnh</th>
+            <th class="table__danhsach--o-main">Mô tả</th>
+            <th class="table__danhsach--o-main"><i class="fa-solid fa-sliders"></i>Chức năng</th>
+        </tr>
+        
+        {% for i in listobj %}
+        <tr class="table__danhsach--row">
+            <td class="table__danhsach--o">{{i.ten_ao}}</td>
+            <td class="table__danhsach--o">{{i.soluong}}</td>
+            <td class="table__danhsach--o">{{i.giatien}}</td>
+            <td class="table__danhsach--o"><img src="/ADMIN/media/{{i.anh}}" alt="ảnh sản phẩm" style="width:100px; height:100px; border-radius:5%"></td>
+            <td class="table__danhsach--o">{{i.mo_ta}}</td>
+            <td class="table__danhsach--o"><button onclick="hide_form({{i.id_ao}})" id="model_btn" class="button">Sửa</button>   <a href="{% url 'xoa_sp' i.id_ao %}"><button onclick="return confirm('Bạn có chắc muốn xóa không ?');" id="model_btn" class="button">Xóa</button></a></td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+    <div>
+        {% include 'Index_giamgia/giamgia.html' %}
+        
+        {% include 'Index_giamgia/maloaisanpham.html' %}
+    </div>
+</div>
+<div class="giua">
+    <div onclick="hide_form_adder()" class="btn__giua">Thêm sản phẩm</div>
+</div>
+
+{% include 'Index_giamgia/chucnang.html' %}
+
+<ul class="pagination">
+    {% if listobj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ listobj.previous_page_number }}">Previous</a></li>
+    {% else %}
+        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+    {% endif %}
+
+    {% for num in listobj.paginator.page_range %}
+        {% if num == listobj.number %}
+            <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+    {% endfor %}
+
+    {% if listobj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ listobj.next_page_number }}">Next</a></li>
+    {% else %}
+        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+    {% endif %}
+</ul>
+
+{% endblock  %}
